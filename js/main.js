@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Subtle parallax on hero layers
   const hero = document.querySelector('.hero');
-  const layers = document.querySelectorAll('.hero-clouds, .hero-landscape, .hero-mist, .hero-silhouette, .hero-shrine');
+  const layers = document.querySelectorAll('.hero-clouds, .hero-landscape, .hero-mist');
   if (hero && layers.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     window.addEventListener('scroll', () => {
       const rect = hero.getBoundingClientRect();
