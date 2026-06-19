@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 50" shape-rendering="crispEdges">
+  <!-- BOTW-inspired castle silhouette in pixel art -->
+  <rect x="0" y="45" width="80" height="5" fill="#1a2a1a"/>
+  <!-- Main keep -->
+  <rect x="28" y="18" width="24" height="27" fill="#0d1520"/>
+  <rect x="30" y="20" width="20" height="23" fill="#111c28"/>
+  <!-- Central tower -->
+  <rect x="34" y="8" width="12" height="12" fill="#0d1520"/>
+  <rect x="36" y="4" width="8" height="6" fill="#0d1520"/>
+  <rect x="38" y="0" width="4" height="6" fill="#0d1520"/>
+  <!-- Left wing -->
+  <rect x="10" y="28" width="18" height="17" fill="#0d1520"/>
+  <rect x="12" y="22" width="6" height="8" fill="#0d1520"/>
+  <rect x="13" y="18" width="4" height="6" fill="#0d1520"/>
+  <!-- Right wing -->
+  <rect x="52" y="28" width="18" height="17" fill="#0d1520"/>
+  <rect x="62" y="22" width="6" height="8" fill="#0d1520"/>
+  <rect x="63" y="18" width="4" height="6" fill="#0d1520"/>
+  <!-- Battlements -->
+  <rect x="28" y="16" width="4" height="4" fill="#0d1520"/>
+  <rect x="36" y="16" width="4" height="4" fill="#0d1520"/>
+  <rect x="44" y="16" width="4" height="4" fill="#0d1520"/>
+  <rect x="48" y="16" width="4" height="4" fill="#0d1520"/>
+  <!-- Windows glow -->
+  <rect x="38" y="24" width="4" height="4" fill="#ff8c32" opacity="0.6"/>
+  <rect x="16" y="32" width="3" height="3" fill="#4a9eff" opacity="0.4"/>
+  <rect x="61" y="32" width="3" height="3" fill="#4a9eff" opacity="0.4"/>
+  <!-- Mist base -->
+  <rect x="0" y="42" width="80" height="4" fill="#2a3a4a" opacity="0.5"/>
+</svg>

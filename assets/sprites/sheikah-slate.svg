@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 32" shape-rendering="crispEdges">
+  <!-- Sheikah slate inspired tablet -->
+  <rect x="2" y="0" width="20" height="32" fill="#1a2838" rx="0"/>
+  <rect x="4" y="2" width="16" height="28" fill="#243448"/>
+  <rect x="6" y="4" width="12" height="20" fill="#0a1520"/>
+  <!-- Glowing eye symbol -->
+  <rect x="10" y="8" width="4" height="2" fill="#ff8c32"/>
+  <rect x="8" y="10" width="8" height="2" fill="#ff8c32"/>
+  <rect x="9" y="12" width="6" height="2" fill="#ff6c12"/>
+  <rect x="10" y="14" width="4" height="2" fill="#ff8c32"/>
+  <rect x="11" y="16" width="2" height="2" fill="#ffcc66"/>
+  <!-- Corner accents -->
+  <rect x="4" y="2" width="2" height="2" fill="#4a9eff"/>
+  <rect x="18" y="2" width="2" height="2" fill="#4a9eff"/>
+  <rect x="4" y="28" width="2" height="2" fill="#4a9eff"/>
+  <rect x="18" y="28" width="2" height="2" fill="#4a9eff"/>
+  <!-- Bottom button -->
+  <rect x="9" y="26" width="6" height="2" fill="#2a4a6a"/>
+</svg>

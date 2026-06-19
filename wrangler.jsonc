@@ -1,0 +1,27 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "hero-of-legend",
+  "compatibility_date": "2026-06-19",
+  "main": "./worker/index.ts",
+  "routes": [
+    {
+      "pattern": "herooflegend.com",
+      "custom_domain": true
+    },
+    {
+      "pattern": "www.herooflegend.com",
+      "custom_domain": true
+    }
+  ],
+  "assets": {
+    "directory": ".",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*"]
+  },
+  "send_email": [
+    {
+      "name": "EMAIL",
+      "remote": true
+    }
+  ]
+}
