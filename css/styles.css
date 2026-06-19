@@ -13,7 +13,13 @@
   --text-dark: #1a2228;
   --text-muted: #5a6a78;
   --font-comic: 'Bangers', cursive;
+  --font-narrative: 'Cormorant Garamond', Georgia, serif;
   --font-body: 'Comic Neue', 'Comic Sans MS', cursive;
+  --wc-green-deep: #1e3d2a;
+  --wc-green-mid: #3d6b4f;
+  --wc-green-light: #7ab87a;
+  --wc-godray: rgba(180, 235, 255, 0.55);
+  --wc-blade-glow: rgba(100, 200, 255, 0.7);
   --font-ui: 'Inter', system-ui, sans-serif;
   --panel-border: 4px solid var(--ink);
   --comic-shadow: 6px 6px 0 var(--ink);
@@ -112,10 +118,11 @@ body {
   left: 50%;
   transform: translateX(-50%);
   z-index: 150;
-  font-family: var(--font-comic);
-  font-size: 1.1rem;
-  letter-spacing: 0.08em;
-  color: var(--ink);
+  font-family: var(--font-narrative);
+  font-size: 1.15rem;
+  font-style: italic;
+  letter-spacing: 0.06em;
+  color: rgba(255, 252, 245, 0.95);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -123,7 +130,7 @@ body {
   opacity: 1;
   transition: opacity 0.5s;
   pointer-events: none;
-  text-shadow: 2px 2px 0 rgba(255,255,255,0.8);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
 }
 
 .scroll-hint.hidden { opacity: 0; }
@@ -190,131 +197,182 @@ body {
   text-shadow: 1px 1px 0 var(--ink);
 }
 
-/* ── Scene 1: Sword dive intro ── */
-.comic-panel--intro {
-  background: linear-gradient(180deg, #1a2848 0%, #4a6898 40%, #c8e0a8 100%);
-  justify-content: flex-end;
-  padding-bottom: 60px;
+/* ── Watercolor full-bleed scene (intro) ── */
+.watercolor-scene {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.watercolor-scene--intro {
+  background:
+    radial-gradient(ellipse 80% 50% at 65% 8%, rgba(200, 240, 255, 0.45) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 40% at 30% 15%, rgba(180, 220, 200, 0.3) 0%, transparent 50%),
+    linear-gradient(180deg, #1a3028 0%, var(--wc-green-deep) 25%, var(--wc-green-mid) 55%, var(--wc-green-light) 85%, #9acc8a 100%);
+}
+
+.intro-god-rays {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(165deg, transparent 30%, var(--wc-godray) 42%, transparent 52%),
+    linear-gradient(175deg, transparent 25%, rgba(220, 245, 255, 0.35) 38%, transparent 48%),
+    linear-gradient(155deg, transparent 28%, rgba(160, 220, 240, 0.25) 40%, transparent 50%);
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: screen;
+}
+
+.intro-cave-left,
+.intro-cave-right {
+  position: absolute;
+  bottom: 0;
+  width: 35%;
+  height: 70%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.intro-cave-left {
+  left: 0;
+  background: radial-gradient(ellipse 100% 80% at 0% 80%, rgba(20, 40, 30, 0.7) 0%, transparent 70%);
+}
+
+.intro-cave-right {
+  right: 0;
+  background: radial-gradient(ellipse 100% 80% at 100% 75%, rgba(25, 45, 35, 0.65) 0%, transparent 70%);
+}
+
+.intro-foliage {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 25%;
+  background:
+    radial-gradient(ellipse 30% 60% at 10% 100%, rgba(60, 120, 50, 0.5) 0%, transparent 70%),
+    radial-gradient(ellipse 25% 50% at 88% 95%, rgba(50, 100, 45, 0.45) 0%, transparent 65%),
+    radial-gradient(ellipse 20% 40% at 50% 100%, rgba(70, 130, 60, 0.3) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 2;
 }
 
 .intro-stage {
   position: absolute;
   inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  z-index: 3;
 }
 
-.intro-action-lines {
+.intro-plunge-lines {
   position: absolute;
-  top: 5%;
+  top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: min(200px, 40vw);
+  width: min(100px, 18vw);
   height: auto;
   opacity: 0;
   pointer-events: none;
+  z-index: 4;
+  filter: blur(0.3px);
 }
 
 .intro-sword-wrap {
   position: absolute;
-  top: 8%;
+  top: 0;
   left: 50%;
-  transform: translateX(-50%) translateY(var(--sword-y, 0px)) rotate(var(--sword-rotate, -5deg)) scale(var(--sword-scale, 1));
-  transform-origin: center bottom;
-  z-index: 3;
+  transform: translateX(-50%) translateY(var(--sword-y, -32vh)) rotate(var(--sword-rotate, 0deg)) scale(var(--sword-scale, 1));
+  transform-origin: 50% 100%;
+  z-index: 6;
   will-change: transform;
 }
 
+.intro-sword-glow {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 80px;
+  background: radial-gradient(ellipse, var(--wc-blade-glow) 0%, transparent 70%);
+  opacity: 0;
+  pointer-events: none;
+  filter: blur(8px);
+}
+
 .intro-sword {
-  width: min(80px, 14vw);
+  width: min(120px, 22vh);
   height: auto;
-  filter: drop-shadow(4px 4px 0 rgba(0,0,0,0.4));
+  display: block;
+  filter:
+    drop-shadow(0 0 18px rgba(120, 200, 255, 0.45))
+    drop-shadow(0 6px 12px rgba(0, 0, 0, 0.25));
 }
 
 .intro-pyramid-wrap {
   position: absolute;
-  bottom: 12%;
+  bottom: 10%;
   left: 50%;
   transform: translateX(-50%) scale(var(--pyramid-scale, 0.85));
-  z-index: 2;
+  z-index: 5;
   will-change: transform;
 }
 
 .intro-pyramid {
-  width: min(240px, 50vw);
+  width: min(300px, 62vw);
   height: auto;
-  filter: drop-shadow(6px 6px 0 rgba(0,0,0,0.3));
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.3));
 }
 
 .intro-impact {
   position: absolute;
-  top: 30%;
+  top: 18%;
   left: 50%;
   transform: translate(-50%, -50%) scale(var(--impact-scale, 0));
-  width: 120px;
-  height: 120px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,204,102,0.9) 0%, rgba(255,140,50,0.4) 40%, transparent 70%);
+  background: radial-gradient(circle, rgba(200, 240, 255, 0.95) 0%, rgba(100, 200, 255, 0.5) 35%, rgba(255, 220, 120, 0.3) 55%, transparent 75%);
   pointer-events: none;
   opacity: var(--impact-opacity, 0);
+  filter: blur(2px);
 }
 
-.speech-bubble {
+/* Watercolor narrative captions */
+.narrative-caption {
   position: absolute;
-  background: #fff;
-  border: 3px solid var(--ink);
-  border-radius: 20px;
-  padding: 14px 22px;
-  font-family: var(--font-body);
-  font-size: 1.05rem;
-  font-weight: 700;
-  max-width: 280px;
-  box-shadow: 4px 4px 0 var(--ink);
+  background: rgba(255, 252, 245, 0.82);
+  backdrop-filter: blur(6px);
+  border: none;
+  border-radius: 4px;
+  padding: 14px 24px;
+  font-family: var(--font-narrative);
+  font-size: 1.25rem;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--text-dark);
+  max-width: 300px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
   opacity: 0;
-  transform: translateY(20px) scale(0.9);
+  transform: translateY(16px) scale(0.92);
   z-index: 10;
   pointer-events: none;
+  letter-spacing: 0.02em;
 }
 
-.speech-bubble::after {
-  content: '';
-  position: absolute;
-  bottom: -14px;
-  left: 30px;
-  width: 0;
-  height: 0;
-  border-left: 12px solid transparent;
-  border-right: 12px solid transparent;
-  border-top: 14px solid var(--ink);
-}
-
-.speech-bubble::before {
-  content: '';
-  position: absolute;
-  bottom: -9px;
-  left: 33px;
-  width: 0;
-  height: 0;
-  border-left: 9px solid transparent;
-  border-right: 9px solid transparent;
-  border-top: 11px solid #fff;
-  z-index: 1;
-}
-
-.speech-bubble--intro#intro-bubble-1 { top: 8%; left: 6%; }
-.speech-bubble--intro#intro-bubble-2 { top: 8%; right: 6%; }
-.speech-bubble--intro#intro-bubble-3 { bottom: 6%; left: 50%; transform: translateX(-50%) translateY(20px) scale(0.9); }
-.speech-bubble--intro#intro-bubble-3::after { left: 50%; margin-left: -12px; }
-.speech-bubble--intro#intro-bubble-3::before { left: 50%; margin-left: -9px; }
-
-.speech-bubble--accent {
-  background: #fff8e0;
-  border-color: var(--sheikah-glow);
+.narrative-caption--1 { top: 10%; left: 5%; }
+.narrative-caption--2 { top: 10%; right: 5%; text-align: right; }
+.narrative-caption--accent {
+  bottom: 8%;
+  left: 50%;
+  transform: translateX(-50%) translateY(16px) scale(0.92);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.45rem;
   color: var(--sheikah-glow);
-  font-family: var(--font-comic);
-  font-size: 1.2rem;
-  letter-spacing: 0.05em;
+  background: rgba(255, 248, 230, 0.88);
+  text-align: center;
 }
 
 /* ── Scene 2: Hero ── */
@@ -369,10 +427,10 @@ body {
 .hero-art-pyramid { width: 100px; height: auto; }
 .hero-art-sword {
   position: absolute;
-  top: -40px;
-  left: 40px;
+  top: -50px;
+  left: 44px;
   width: 30px;
-  transform: rotate(15deg);
+  transform: rotate(0deg);
 }
 
 /* ── Scene 3: Quests ── */
@@ -650,7 +708,8 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .scroll-scene { height: auto; min-height: 100vh; }
   .scroll-scene__sticky { position: relative; height: auto; min-height: 100vh; }
-  .speech-bubble, .hero-reveal, .quest-card, .contact-reveal { opacity: 1 !important; transform: none !important; }
+  .narrative-caption, .hero-reveal, .quest-card, .contact-reveal { opacity: 1 !important; transform: none !important; }
+  .narrative-caption--accent { transform: translateX(-50%) !important; }
   .contact-panel { pointer-events: auto !important; }
   .scroll-hint { display: none; }
 }
@@ -659,8 +718,9 @@ body {
 @media (max-width: 768px) {
   .comic-panel { padding: 24px 18px; height: min(92vh, 700px); }
   .quest-grid { grid-template-columns: 1fr; }
-  .speech-bubble--intro#intro-bubble-1 { top: 4%; left: 4%; max-width: 200px; font-size: 0.9rem; }
-  .speech-bubble--intro#intro-bubble-2 { top: auto; bottom: 28%; right: 4%; max-width: 200px; font-size: 0.9rem; }
+  .narrative-caption--1 { top: 6%; left: 3%; max-width: 200px; font-size: 1rem; }
+  .narrative-caption--2 { top: auto; bottom: 32%; right: 3%; max-width: 200px; font-size: 1rem; }
+  .narrative-caption--accent { font-size: 1.15rem; }
   .nav-link:not(.nav-link--accent) { display: none; }
   .hero-comic-art { display: none; }
 }

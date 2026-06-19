@@ -7,7 +7,7 @@
   <title>Hero of Legend</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -33,26 +33,31 @@
 
   <main class="scroll-story" id="scroll-story">
     <!-- Scene 1: Master Sword dives into Triforce pyramid -->
-    <section class="scroll-scene" id="scene-intro" data-scene="intro" data-height="4">
+    <section class="scroll-scene" id="scene-intro" data-scene="intro" data-height="5">
       <div class="scroll-scene__sticky">
-        <div class="comic-panel comic-panel--intro">
+        <div class="watercolor-scene watercolor-scene--intro">
+          <div class="intro-god-rays" id="intro-god-rays" aria-hidden="true"></div>
+          <div class="intro-cave-left" aria-hidden="true"></div>
+          <div class="intro-cave-right" aria-hidden="true"></div>
+          <div class="intro-foliage" aria-hidden="true"></div>
           <div class="intro-stage" id="intro-stage">
-            <img src="assets/comic/action-lines.svg" alt="" class="intro-action-lines" id="intro-action-lines" width="200" height="300">
+            <img src="assets/watercolor/plunge-lines.svg" alt="" class="intro-plunge-lines" id="intro-plunge-lines" width="120" height="400">
             <div class="intro-sword-wrap" id="intro-sword-wrap">
-              <img src="assets/comic/master-sword.svg" alt="" class="intro-sword" id="intro-sword" width="80" height="320">
+              <div class="intro-sword-glow" id="intro-sword-glow" aria-hidden="true"></div>
+              <img src="assets/watercolor/master-sword.svg" alt="" class="intro-sword" id="intro-sword" width="100" height="350">
             </div>
             <div class="intro-pyramid-wrap" id="intro-pyramid-wrap">
-              <img src="assets/comic/triforce-pyramid.svg" alt="" class="intro-pyramid" id="intro-pyramid" width="240" height="216">
+              <img src="assets/watercolor/triforce-pedestal.svg" alt="" class="intro-pyramid" id="intro-pyramid" width="280" height="200">
               <div class="intro-impact" id="intro-impact" aria-hidden="true"></div>
             </div>
           </div>
-          <div class="speech-bubble speech-bubble--intro" id="intro-bubble-1">
+          <div class="narrative-caption narrative-caption--1" id="intro-bubble-1">
             <p>When the wild winds stir across Hyrule...</p>
           </div>
-          <div class="speech-bubble speech-bubble--intro" id="intro-bubble-2">
+          <div class="narrative-caption narrative-caption--2" id="intro-bubble-2">
             <p>...a hero of legend awakens.</p>
           </div>
-          <div class="speech-bubble speech-bubble--intro speech-bubble--accent" id="intro-bubble-3">
+          <div class="narrative-caption narrative-caption--accent" id="intro-bubble-3">
             <p>What quest brings you here?</p>
           </div>
         </div>
@@ -68,8 +73,8 @@
             <h1 class="hero-title">Hero of <span class="hero-title-accent">Legend</span></h1>
             <p class="hero-subtitle">Across wild lands and ancient shrines, every path leads to a new adventure. The hero awaits those bold enough to seek their quest.</p>
             <div class="hero-comic-art" aria-hidden="true">
-              <img src="assets/comic/triforce-pyramid.svg" alt="" width="120" height="108" class="hero-art-pyramid">
-              <img src="assets/comic/master-sword.svg" alt="" width="40" height="160" class="hero-art-sword">
+              <img src="assets/watercolor/triforce-pedestal.svg" alt="" width="120" height="86" class="hero-art-pyramid">
+              <img src="assets/watercolor/master-sword.svg" alt="" width="36" height="126" class="hero-art-sword">
             </div>
           </div>
         </div>

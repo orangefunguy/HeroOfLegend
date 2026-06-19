@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 420" fill="none">
+  <defs>
+    <linearGradient id="bladeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7ab8d8"/>
+      <stop offset="50%" stop-color="#b8e0f8"/>
+      <stop offset="100%" stop-color="#6aa8c8"/>
+    </linearGradient>
+    <linearGradient id="bladeShine" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#e8f8ff" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#4a90b8" stop-opacity="0.3"/>
+    </linearGradient>
+    <linearGradient id="guardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#5a8ab8"/>
+      <stop offset="100%" stop-color="#3a5a78"/>
+    </linearGradient>
+    <linearGradient id="gripGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2a4a6a"/>
+      <stop offset="50%" stop-color="#4a6a8a"/>
+      <stop offset="100%" stop-color="#2a4a6a"/>
+    </linearGradient>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <!-- Point-down Master Sword (original, reference-inspired) -->
+  <g filter="url(#softGlow)">
+    <!-- Pommel -->
+    <ellipse cx="60" cy="28" rx="14" ry="10" fill="url(#guardGrad)" stroke="#2a3a4a" stroke-width="1.5" opacity="0.9"/>
+    <path d="M60 18 L63 28 L57 28 Z" fill="#6a8ab8" stroke="#2a3a4a" stroke-width="1"/>
+    <!-- Grip - diamond wrap -->
+    <rect x="50" y="36" width="20" height="72" rx="3" fill="url(#gripGrad)" stroke="#2a3a4a" stroke-width="1.5"/>
+    <path d="M52 48 L68 48 L66 56 L54 56 Z" fill="none" stroke="#1a2a3a" stroke-width="0.8" opacity="0.5"/>
+    <path d="M52 60 L68 60 L66 68 L54 68 Z" fill="none" stroke="#1a2a3a" stroke-width="0.8" opacity="0.5"/>
+    <path d="M52 72 L68 72 L66 80 L54 80 Z" fill="none" stroke="#1a2a3a" stroke-width="0.8" opacity="0.5"/>
+    <path d="M52 84 L68 84 L66 92 L54 92 Z" fill="none" stroke="#1a2a3a" stroke-width="0.8" opacity="0.5"/>
+    <!-- Ornate crossguard with wings + Triforce -->
+    <path d="M20 108 L100 108 L96 128 L24 128 Z" fill="url(#guardGrad)" stroke="#2a3a4a" stroke-width="2"/>
+    <path d="M8 112 L20 108 L18 124 L6 120 Z" fill="#5a8ab8" stroke="#2a3a4a" stroke-width="1.5"/>
+    <path d="M112 112 L100 108 L102 124 L114 120 Z" fill="#5a8ab8" stroke="#2a3a4a" stroke-width="1.5"/>
+    <path d="M44 112 L60 96 L76 112 L60 120 Z" fill="#4a7aa8" stroke="#2a3a4a" stroke-width="1.5"/>
+    <path d="M54 104 L60 98 L66 104 L60 110 Z" fill="#e8c848" stroke="#8a7020" stroke-width="1"/>
+    <!-- Blade (point down) -->
+    <path d="M52 128 L68 128 L62 400 L58 400 Z" fill="url(#bladeGrad)" stroke="#3a5a6a" stroke-width="1.5"/>
+    <path d="M58 140 L60 390 L62 140 Z" fill="url(#bladeShine)"/>
+    <line x1="60" y1="140" x2="60" y2="385" stroke="#e8f8ff" stroke-width="0.8" opacity="0.4"/>
+    <!-- Tip -->
+    <path d="M58 400 L60 412 L62 400 Z" fill="#a8d0e8" stroke="#3a5a6a" stroke-width="1"/>
+    <!-- Blade glow at tip -->
+    <ellipse cx="60" cy="405" rx="8" ry="4" fill="#88e0ff" opacity="0.5"/>
+  </g>
+</svg>
