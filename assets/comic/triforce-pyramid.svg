@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 180" fill="none">
+  <!-- 3D Triforce pyramid (original comic art) -->
+  <g stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round">
+    <!-- Base shadow -->
+    <ellipse cx="100" cy="168" rx="70" ry="10" fill="#1a1a1a" opacity="0.2"/>
+    <!-- Left face -->
+    <path d="M100 30 L30 150 L100 150 Z" fill="#d49820"/>
+    <!-- Right face -->
+    <path d="M100 30 L170 150 L100 150 Z" fill="#f5c842"/>
+    <!-- Front face (bottom triangle of triforce) -->
+    <path d="M55 150 L100 90 L145 150 Z" fill="#e8a838"/>
+    <!-- Top Triforce symbol floating above apex -->
+    <g transform="translate(100, 22)">
+      <path d="M0,-14 L12,10 L-12,10 Z" fill="#f5c842" stroke="#1a1a1a" stroke-width="2"/>
+      <path d="M0,-8 L7,6 L-7,6 Z" fill="#ffe880"/>
+    </g>
+    <!-- Energy cracks -->
+    <path d="M100 90 L100 150" stroke="#ff8c32" stroke-width="2" opacity="0.7"/>
+    <path d="M80 130 L100 100 L120 130" stroke="#4ae8ff" stroke-width="1.5" opacity="0.5" fill="none"/>
+    <!-- Panel hatch lines -->
+    <line x1="65" y1="120" x2="85" y2="100" stroke="#1a1a1a" stroke-width="1" opacity="0.3"/>
+    <line x1="115" y1="120" x2="135" y2="100" stroke="#1a1a1a" stroke-width="1" opacity="0.3"/>
+  </g>
+  <!-- Impact glow (animated via CSS) -->
+  <circle cx="100" cy="95" r="20" fill="#ffcc66" opacity="0" class="impact-glow"/>
+</svg>

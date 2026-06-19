@@ -1,11 +1,11 @@
 # Hero of Legend
 
-A Breath of the Wild–inspired **16-bit pixel art** landing page for [herooflegend.com](https://herooflegend.com), featuring a Zelda II NES–style intro cinematic and an engagement-focused contact form.
+A Breath of the Wild–inspired **comic book** landing page for [herooflegend.com](https://herooflegend.com), featuring an Apple-style scroll-driven story where the Master Sword dives into a Triforce pyramid, then reveals quest cards and the contact form — all reversible on scroll up.
 
 ## Features
 
-- **Intro sequence** — Dark starfield, rising castle silhouette, narrative text crawl, optional chiptune audio
-- **BOTW aesthetic** — Sage greens, sky blues, Sheikah orange glow, pixel UI chrome
+- **Scroll story** — Mac Studio–style sticky scenes; sword dives into Triforce as you scroll; scroll up to reverse
+- **Comic book aesthetic** — Bold ink outlines, halftone texture, speech bubbles, Bangers + Comic Neue fonts
 - **Quest Log form** — Asks *"What quest are you on?"* without exposing the hero's email
 - **Cloudflare Worker** — Optional backend for email delivery via Cloudflare Email Service
 
@@ -67,11 +67,10 @@ HeroOfLegend/
 ├── index.html          # Landing page + intro overlay
 ├── css/styles.css      # BOTW 16-bit theme
 ├── js/
-│   ├── intro.js        # Zelda II-style intro animation
-│   ├── audio.js        # Procedural chiptune audio
+│   ├── scroll-story.js # Apple-style scroll-scrub animations
 │   ├── form.js         # Contact form logic
 │   └── main.js         # Page interactions
-├── assets/sprites/     # Original pixel SVG art
+├── assets/comic/       # Comic book SVG illustrations
 ├── worker/index.ts     # Contact API + email relay
 └── wrangler.jsonc      # Cloudflare Worker config
 ```

@@ -1,43 +1,30 @@
 /**
- * Main landing page interactions.
+ * Main page interactions for comic scroll story.
  */
 document.addEventListener('DOMContentLoaded', () => {
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  const replayBtn = document.getElementById('replay-intro');
-  if (replayBtn) {
-    replayBtn.addEventListener('click', () => {
+  const scrollTopBtn = document.getElementById('scroll-top');
+  if (scrollTopBtn) {
+    scrollTopBtn.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      setTimeout(() => {
-        if (window.HeroIntro) HeroIntro.replay();
-      }, 400);
     });
   }
 
-  // Subtle parallax on hero layers
-  const hero = document.querySelector('.hero');
-  const layers = document.querySelectorAll('.hero-clouds, .hero-landscape, .hero-mist');
-  if (hero && layers.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    window.addEventListener('scroll', () => {
-      const rect = hero.getBoundingClientRect();
-      if (rect.bottom < 0 || rect.top > window.innerHeight) return;
-      const progress = -rect.top / rect.height;
-      layers.forEach((layer, i) => {
-        const speed = (i + 1) * 12;
-        layer.style.transform = `translateY(${progress * speed}px)`;
-      });
-    }, { passive: true });
-  }
-
-  // Smooth scroll for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+  document.querySelectorAll('a[href^="#scene-"]').forEach((link) => {
     link.addEventListener('click', (e) => {
-      const target = document.querySelector(link.getAttribute('href'));
+      const id = link.getAttribute('href').slice(1);
+      const target = document.getElementById(id);
       if (target) {
         e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        target.scrollIntoView({ behavior: 'smooth' });
       }
     });
+  });
+
+  document.querySelector('.logo')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 });
