@@ -1,30 +1,45 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 50" shape-rendering="crispEdges">
-  <!-- BOTW-inspired castle silhouette in pixel art -->
-  <rect x="0" y="45" width="80" height="5" fill="#1a2a1a"/>
-  <!-- Main keep -->
-  <rect x="28" y="18" width="24" height="27" fill="#0d1520"/>
-  <rect x="30" y="20" width="20" height="23" fill="#111c28"/>
-  <!-- Central tower -->
-  <rect x="34" y="8" width="12" height="12" fill="#0d1520"/>
-  <rect x="36" y="4" width="8" height="6" fill="#0d1520"/>
-  <rect x="38" y="0" width="4" height="6" fill="#0d1520"/>
-  <!-- Left wing -->
-  <rect x="10" y="28" width="18" height="17" fill="#0d1520"/>
-  <rect x="12" y="22" width="6" height="8" fill="#0d1520"/>
-  <rect x="13" y="18" width="4" height="6" fill="#0d1520"/>
-  <!-- Right wing -->
-  <rect x="52" y="28" width="18" height="17" fill="#0d1520"/>
-  <rect x="62" y="22" width="6" height="8" fill="#0d1520"/>
-  <rect x="63" y="18" width="4" height="6" fill="#0d1520"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 80" shape-rendering="crispEdges">
+  <!-- BOTW Hyrule Castle inspired ruin silhouette (original pixel art) -->
+  <!-- Base ground -->
+  <rect x="0" y="72" width="120" height="8" fill="#1a2a1a"/>
+  <!-- Main central keep -->
+  <rect x="44" y="28" width="32" height="44" fill="#1a1428"/>
+  <rect x="48" y="32" width="24" height="36" fill="#2a1838"/>
+  <!-- Central spire -->
+  <rect x="54" y="12" width="12" height="18" fill="#1a1428"/>
+  <rect x="56" y="4" width="8" height="10" fill="#1a1428"/>
+  <rect x="58" y="0" width="4" height="6" fill="#2a1838"/>
+  <!-- Left ruin wing -->
+  <rect x="12" y="40" width="28" height="32" fill="#1a1428"/>
+  <rect x="16" y="44" width="20" height="24" fill="#2a1838"/>
+  <rect x="8" y="48" width="8" height="20" fill="#1a1428"/>
+  <rect x="6" y="52" width="4" height="12" fill="#0a0818"/>
+  <!-- Right ruin wing -->
+  <rect x="80" y="40" width="28" height="32" fill="#1a1428"/>
+  <rect x="84" y="44" width="20" height="24" fill="#2a1838"/>
+  <rect x="104" y="48" width="8" height="20" fill="#1a1428"/>
+  <rect x="110" y="52" width="4" height="12" fill="#0a0818"/>
   <!-- Battlements -->
-  <rect x="28" y="16" width="4" height="4" fill="#0d1520"/>
-  <rect x="36" y="16" width="4" height="4" fill="#0d1520"/>
-  <rect x="44" y="16" width="4" height="4" fill="#0d1520"/>
-  <rect x="48" y="16" width="4" height="4" fill="#0d1520"/>
-  <!-- Windows glow -->
-  <rect x="38" y="24" width="4" height="4" fill="#ff8c32" opacity="0.6"/>
-  <rect x="16" y="32" width="3" height="3" fill="#4a9eff" opacity="0.4"/>
-  <rect x="61" y="32" width="3" height="3" fill="#4a9eff" opacity="0.4"/>
-  <!-- Mist base -->
-  <rect x="0" y="42" width="80" height="4" fill="#2a3a4a" opacity="0.5"/>
+  <rect x="44" y="24" width="6" height="6" fill="#1a1428"/>
+  <rect x="54" y="24" width="6" height="6" fill="#1a1428"/>
+  <rect x="64" y="24" width="6" height="6" fill="#1a1428"/>
+  <rect x="70" y="24" width="6" height="6" fill="#1a1428"/>
+  <!-- Collapsed sections -->
+  <rect x="20" y="36" width="10" height="6" fill="#0a0818"/>
+  <rect x="90" y="36" width="10" height="6" fill="#0a0818"/>
+  <!-- Malice-like glow accents (orange BOTW) -->
+  <rect x="58" y="40" width="4" height="4" fill="#ff8c32" opacity="0.7"/>
+  <rect x="56" y="44" width="8" height="2" fill="#ff6c12" opacity="0.4"/>
+  <rect x="24" y="48" width="3" height="3" fill="#ff8c32" opacity="0.5"/>
+  <rect x="92" y="48" width="3" height="3" fill="#ff8c32" opacity="0.5"/>
+  <!-- Sheikah blue windows -->
+  <rect x="18" y="52" width="3" height="3" fill="#4a9eff" opacity="0.5"/>
+  <rect x="98" y="52" width="3" height="3" fill="#4a9eff" opacity="0.5"/>
+  <!-- Mist at base -->
+  <rect x="0" y="66" width="120" height="8" fill="#4a5878" opacity="0.4"/>
+  <rect x="10" y="68" width="20" height="4" fill="#6a7898" opacity="0.3"/>
+  <rect x="90" y="68" width="20" height="4" fill="#6a7898" opacity="0.3"/>
+  <!-- Triforce above -->
+  <polygon points="60,2 66,14 54,14" fill="#e8a838" opacity="0.9"/>
+  <polygon points="60,5 63,12 57,12" fill="#f5c842"/>
 </svg>

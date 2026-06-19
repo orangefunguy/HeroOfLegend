@@ -56,9 +56,58 @@ const HeroIntro = (() => {
     }
   }
 
-  function drawStars(w, h, time) {
+  function getSize() {
+    const dpr = window.devicePixelRatio || 1;
+    return { w: canvas.width / dpr, h: canvas.height / dpr };
+  }
+
+  function drawSky(w, h, warmth) {
+    const g = ctx.createLinearGradient(0, 0, 0, h);
+    if (warmth < 0.3) {
+      g.addColorStop(0, '#080c14');
+      g.addColorStop(0.5, '#1a2848');
+      g.addColorStop(1, '#2a4070');
+    } else {
+      const t = Math.min((warmth - 0.3) / 0.7, 1);
+      g.addColorStop(0, lerpColor('#1a2848', '#2a4070', t));
+      g.addColorStop(0.35, lerpColor('#2a4070', '#4a6898', t));
+      g.addColorStop(0.6, lerpColor('#4a6898', '#88b8d8', t));
+      g.addColorStop(0.8, lerpColor('#88b8d8', '#e8c878', t));
+      g.addColorStop(1, lerpColor('#c8e0a8', '#a8c878', t));
+    }
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, w, h);
+
+    if (warmth > 0.4) {
+      const sunAlpha = Math.min((warmth - 0.4) / 0.6, 1);
+      const sunX = w * 0.75;
+      const sunY = h * 0.18;
+      ctx.fillStyle = `rgba(255, 232, 128, ${sunAlpha * 0.9})`;
+      ctx.fillRect(sunX - 8, sunY - 8, 16, 16);
+      ctx.fillStyle = `rgba(255, 208, 64, ${sunAlpha * 0.4})`;
+      ctx.fillRect(sunX - 16, sunY - 16, 32, 32);
+    }
+  }
+
+  function lerpColor(a, b, t) {
+    const parse = (hex) => [
+      parseInt(hex.slice(1, 3), 16),
+      parseInt(hex.slice(3, 5), 16),
+      parseInt(hex.slice(5, 7), 16),
+    ];
+    const ca = parse(a);
+    const cb = parse(b);
+    const r = Math.round(ca[0] + (cb[0] - ca[0]) * t);
+    const g = Math.round(ca[1] + (cb[1] - ca[1]) * t);
+    const bl = Math.round(ca[2] + (cb[2] - ca[2]) * t);
+    return `rgb(${r},${g},${bl})`;
+  }
+
+  function drawStars(w, h, time, fade) {
+    const starFade = 1 - fade;
+    if (starFade <= 0) return;
     stars.forEach((s) => {
-      const alpha = 0.3 + 0.7 * Math.abs(Math.sin(time * s.speed + s.twinkle));
+      const alpha = starFade * (0.3 + 0.7 * Math.abs(Math.sin(time * s.speed + s.twinkle)));
       ctx.fillStyle = `rgba(200, 220, 255, ${alpha})`;
       ctx.fillRect(Math.floor(s.x), Math.floor(s.y), s.size, s.size);
     });
@@ -88,35 +137,39 @@ const HeroIntro = (() => {
       ctx.fillRect(mx, my, 6, 3);
     }
 
-    // Castle silhouette (pixel blocks)
-    const castleColor = '#0d1520';
-    const glowColor = 'rgba(255, 140, 50, 0.5)';
-    const blueGlow = 'rgba(74, 158, 255, 0.35)';
+    // BOTW Hyrule Castle ruin silhouette
+    const castleColor = '#1a1428';
+    const castleMid = '#2a1838';
+    const glowColor = 'rgba(255, 140, 50, 0.6)';
+    const blueGlow = 'rgba(74, 158, 255, 0.4)';
 
     // Main keep
-    px(0, -18, 12, 18, castleColor);
-    // Central tower
-    px(0, -28, 6, 12, castleColor);
-    px(0, -34, 4, 8, castleColor);
-    px(0, -40, 2, 6, castleColor);
-    // Left wing
-    px(-10, -12, 9, 12, castleColor);
-    px(-12, -18, 3, 8, castleColor);
-    px(-12, -22, 2, 6, castleColor);
-    // Right wing
-    px(10, -12, 9, 12, castleColor);
-    px(12, -18, 3, 8, castleColor);
-    px(12, -22, 2, 6, castleColor);
+    px(0, -18, 14, 18, castleColor);
+    px(0, -16, 10, 14, castleMid);
+    // Central spire
+    px(0, -30, 7, 14, castleColor);
+    px(0, -38, 5, 10, castleColor);
+    px(0, -44, 3, 8, castleMid);
+    // Left ruin wing
+    px(-14, -12, 11, 14, castleColor);
+    px(-16, -18, 5, 8, castleMid);
+    px(-18, -22, 3, 6, castleColor);
+    // Right ruin wing
+    px(14, -12, 11, 14, castleColor);
+    px(16, -18, 5, 8, castleMid);
+    px(18, -22, 3, 6, castleColor);
     // Battlements
-    px(-6, -20, 2, 3, castleColor);
-    px(-2, -20, 2, 3, castleColor);
-    px(2, -20, 2, 3, castleColor);
-    px(6, -20, 2, 3, castleColor);
-    // Window glows
-    if (progress > 0.5) {
-      px(0, -12, 2, 2, glowColor);
-      px(-8, -8, 2, 2, blueGlow);
-      px(8, -8, 2, 2, blueGlow);
+    px(-7, -20, 3, 3, castleColor);
+    px(-2, -20, 3, 3, castleColor);
+    px(3, -20, 3, 3, castleColor);
+    px(7, -20, 3, 3, castleColor);
+    // Malice / shrine glows
+    if (progress > 0.4) {
+      px(0, -12, 3, 3, glowColor);
+      px(-10, -8, 2, 2, glowColor);
+      px(10, -8, 2, 2, glowColor);
+      px(-8, -6, 2, 2, blueGlow);
+      px(8, -6, 2, 2, blueGlow);
     }
 
     // Triforce above castle
@@ -141,17 +194,17 @@ const HeroIntro = (() => {
     if (!running) return;
     if (!phaseStart) phaseStart = timestamp;
     const elapsed = timestamp - phaseStart;
-    const w = canvas.width;
-    const h = canvas.height;
-
-    ctx.fillStyle = '#080c14';
-    ctx.fillRect(0, 0, w, h);
+    const { w, h } = getSize();
+    let skyWarmth = 0;
+    let starFade = 0;
 
     mistOffset += 0.02;
 
     switch (phase) {
       case PHASE.STARS:
-        drawStars(w, h, timestamp * 0.001);
+        skyWarmth = 0;
+        drawSky(w, h, skyWarmth);
+        drawStars(w, h, timestamp * 0.001, starFade);
         if (elapsed > TIMING.stars) {
           phase = PHASE.RISE;
           phaseStart = timestamp;
@@ -162,7 +215,10 @@ const HeroIntro = (() => {
       case PHASE.RISE: {
         const progress = Math.min(elapsed / TIMING.rise, 1);
         const eased = 1 - Math.pow(1 - progress, 3);
-        drawStars(w, h, timestamp * 0.001);
+        skyWarmth = eased;
+        starFade = eased;
+        drawSky(w, h, skyWarmth);
+        drawStars(w, h, timestamp * 0.001, starFade);
         drawCastle(w, h, eased);
         castleY = eased;
         if (progress >= 1) {
@@ -174,7 +230,9 @@ const HeroIntro = (() => {
       }
 
       case PHASE.HOLD:
-        drawStars(w, h, timestamp * 0.001);
+        skyWarmth = 1;
+        starFade = 1;
+        drawSky(w, h, skyWarmth);
         drawCastle(w, h, 1);
         if (elapsed > TIMING.hold) {
           phase = PHASE.TEXT;
@@ -186,7 +244,8 @@ const HeroIntro = (() => {
         break;
 
       case PHASE.TEXT:
-        drawStars(w, h, timestamp * 0.001);
+        skyWarmth = 1;
+        drawSky(w, h, skyWarmth);
         drawCastle(w, h, 1);
         textTimer += 16;
         if (textTimer > TIMING.textLine) {
@@ -203,7 +262,8 @@ const HeroIntro = (() => {
         break;
 
       case PHASE.FADE:
-        drawStars(w, h, timestamp * 0.001);
+        skyWarmth = 1;
+        drawSky(w, h, skyWarmth);
         drawCastle(w, h, 1);
         {
           const fadeProgress = Math.min(elapsed / TIMING.fade, 1);

@@ -43,11 +43,26 @@
     <main>
       <!-- Hero Section -->
       <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-sky"></div>
-        <div class="hero-mountains"></div>
-        <div class="hero-ground"></div>
+        <div class="hero-bg-layers" aria-hidden="true">
+          <div class="hero-sky"></div>
+          <div class="hero-sun"></div>
+          <div class="hero-sun-rays"></div>
+          <div class="hero-clouds hero-clouds--far"></div>
+          <div class="hero-clouds hero-clouds--near"></div>
+          <div class="hero-landscape">
+            <img src="assets/sprites/landscape-hero.svg" alt="" class="hero-landscape-img">
+          </div>
+          <div class="hero-mountains"></div>
+          <div class="hero-mist"></div>
+          <div class="hero-ground"></div>
+          <canvas id="hero-particles" class="hero-particles"></canvas>
+        </div>
         <div class="hero-content">
-          <div class="hero-badge">★ A Legend Awakens ★</div>
+          <div class="hero-badge">
+            <img src="assets/sprites/triforce.svg" alt="" width="12" height="12" class="hero-badge-icon">
+            A Legend Awakens
+            <img src="assets/sprites/triforce.svg" alt="" width="12" height="12" class="hero-badge-icon">
+          </div>
           <h1 id="hero-title" class="hero-title">Hero of<br><span class="hero-title-accent">Legend</span></h1>
           <p class="hero-subtitle">Across wild lands and ancient shrines, every path leads to a new adventure. The hero awaits those bold enough to seek their quest.</p>
           <a href="#contact" class="cta-btn pixel-btn">
@@ -56,9 +71,25 @@
           </a>
         </div>
         <div class="hero-silhouette" aria-hidden="true">
-          <img src="assets/sprites/castle.svg" alt="" width="320" height="200">
+          <img src="assets/sprites/castle.svg" alt="" width="320" height="200" class="hero-castle">
+        </div>
+        <div class="hero-shrine" aria-hidden="true">
+          <img src="assets/sprites/shrine.svg" alt="" width="48" height="60">
         </div>
       </section>
+
+      <!-- World strip -->
+      <div class="world-strip" aria-hidden="true">
+        <img src="assets/sprites/hylian-border.svg" alt="" class="world-strip-border">
+        <div class="world-strip-icons">
+          <img src="assets/sprites/shrine.svg" alt="" width="24" height="30">
+          <img src="assets/sprites/triforce.svg" alt="" width="20" height="18">
+          <img src="assets/sprites/quest-sword.svg" alt="" width="20" height="20">
+          <img src="assets/sprites/quest-spirit.svg" alt="" width="20" height="20">
+          <img src="assets/sprites/shrine.svg" alt="" width="24" height="30">
+        </div>
+        <img src="assets/sprites/hylian-border.svg" alt="" class="world-strip-border">
+      </div>
 
       <!-- Quest Board -->
       <section id="quests" class="quests" aria-labelledby="quests-title">
@@ -70,25 +101,33 @@
           <p class="section-desc">Choose your path — every great legend begins with a single step into the unknown.</p>
           <div class="quest-grid">
             <article class="quest-card">
-              <div class="quest-card-icon">🗺️</div>
+              <div class="quest-card-icon">
+                <img src="assets/sprites/quest-map.svg" alt="" width="32" height="32">
+              </div>
               <h3 class="quest-card-title">Path of Exploration</h3>
               <p class="quest-card-desc">Chart new territories. Discover what lies beyond the horizon and forge connections across distant lands.</p>
               <span class="quest-card-tag">Adventure</span>
             </article>
             <article class="quest-card">
-              <div class="quest-card-icon">⚔️</div>
+              <div class="quest-card-icon">
+                <img src="assets/sprites/quest-sword.svg" alt="" width="32" height="32">
+              </div>
               <h3 class="quest-card-title">Trial of Collaboration</h3>
               <p class="quest-card-desc">Unite strengths with fellow adventurers. The greatest quests are never walked alone.</p>
               <span class="quest-card-tag">Alliance</span>
             </article>
             <article class="quest-card">
-              <div class="quest-card-icon">✨</div>
+              <div class="quest-card-icon">
+                <img src="assets/sprites/quest-spirit.svg" alt="" width="32" height="32">
+              </div>
               <h3 class="quest-card-title">Spirit of Creation</h3>
               <p class="quest-card-desc">Shape the world with vision and craft. Build monuments that outlast the ages.</p>
               <span class="quest-card-tag">Legacy</span>
             </article>
             <article class="quest-card">
-              <div class="quest-card-icon">🔮</div>
+              <div class="quest-card-icon">
+                <img src="assets/sprites/quest-eye.svg" alt="" width="32" height="32">
+              </div>
               <h3 class="quest-card-title">Ancient Wisdom</h3>
               <p class="quest-card-desc">Seek counsel from those who walked before. Knowledge is the sharpest blade in any quest.</p>
               <span class="quest-card-tag">Guidance</span>
@@ -101,6 +140,8 @@
       <section id="contact" class="contact" aria-labelledby="contact-title">
         <div class="section-inner">
           <div class="contact-panel">
+            <span class="corner-decor corner-decor--bl" aria-hidden="true"></span>
+            <span class="corner-decor corner-decor--br" aria-hidden="true"></span>
             <div class="contact-header">
               <img src="assets/sprites/sheikah-slate.svg" alt="" width="48" height="48" class="contact-icon">
               <div>
@@ -182,6 +223,7 @@
 
   <script src="js/audio.js" defer></script>
   <script src="js/intro.js" defer></script>
+  <script src="js/ambient.js" defer></script>
   <script src="js/form.js" defer></script>
   <script src="js/main.js" defer></script>
 </body>

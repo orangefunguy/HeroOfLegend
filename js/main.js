@@ -15,6 +15,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Subtle parallax on hero layers
+  const hero = document.querySelector('.hero');
+  const layers = document.querySelectorAll('.hero-clouds, .hero-landscape, .hero-mist, .hero-silhouette, .hero-shrine');
+  if (hero && layers.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    window.addEventListener('scroll', () => {
+      const rect = hero.getBoundingClientRect();
+      if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+      const progress = -rect.top / rect.height;
+      layers.forEach((layer, i) => {
+        const speed = (i + 1) * 12;
+        layer.style.transform = `translateY(${progress * speed}px)`;
+      });
+    }, { passive: true });
+  }
+
   // Smooth scroll for anchor links
   document.querySelectorAll('a[href^="#"]').forEach((link) => {
     link.addEventListener('click', (e) => {
